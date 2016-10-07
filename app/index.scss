@@ -1,0 +1,13 @@
+@import '../components/hello-world/hello-world';
+
+body{
+  margin: 0px;
+ /* background-color: #FF6E00;*/
+}
+#home-page{
+  width: auto;
+  height: 200px;
+  background-position: center;
+  background-image: url("../assets/images/trave-trap.jpg");
+  background-repeat: no-repeat;
+}

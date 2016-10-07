@@ -1,0 +1,16 @@
+<div class="hello-world-header" id="ss">
+    <uib-tabset active="active">
+        <uib-tab index="0" heading="Static title">Static content</uib-tab>
+        <uib-tab index="$index + 1" ng-repeat="tab in ['vishal','pragati','pvk']" heading="{{tab}}" disable="tab.disabled">
+            {{tab}}
+        </uib-tab>
+        <uib-tab index="3" select="alertMe()">
+            <uib-tab-heading>
+                <i class="glyphicon glyphicon-bell"></i> Alert!
+            </uib-tab-heading>
+            I've got an HTML heading, and a select callback. Pretty cool!
+        </uib-tab>
+    </uib-tabset>
+    <div>Hello</div>
+    <div>Hi</div>
+</div>
