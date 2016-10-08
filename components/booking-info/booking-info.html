@@ -1,0 +1,36 @@
+<div id="booking-info">
+    <div class="form-group">
+        <label>Location:</label>
+        <ui-select ng-model="country.selected" title="Choose a country">
+            <ui-select-match placeholder="Select or search a country in the list...">{{$select.selected.name}}</ui-select-match>
+            <ui-select-choices repeat="country in countries | filter: $select.search">
+                <span ng-bind-html="country.name | highlight: $select.search"></span>
+                <small ng-bind-html="country.code | highlight: $select.search"></small>
+            </ui-select-choices>
+        </ui-select>
+
+        <br>
+        <p class="input-group">
+            <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="toDate"
+                   is-open="flag" datepicker-options="dateOptions" ng-required="true" close-text="Close"
+                   alt-input-formats="altInputFormats" />
+            <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="flag = !flag"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+        </p>
+
+        <p class="input-group">
+            <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="fromDate"
+                   is-open="flag1" datepicker-options="dateOptions" ng-required="true" close-text="Close"
+                   alt-input-formats="altInputFormats" />
+            <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="flag1 = !flag1"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+        </p>
+        <!--<div style="display:inline-block; min-height:290px;">
+            <div uib-datepicker ng-model="dt" class="well well-sm" datepicker-options="options"></div>
+        </div>-->
+        <br>
+        <button uib-popover-template="dynamicPopover.templateUrl" popover-title="vk" type="button" class="btn btn-default">Submit</button>
+    </div>
+</div>

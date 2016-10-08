@@ -2,6 +2,7 @@ require('./index.scss');
 angular.module('TravelTime', [
         'ngSanitize',
         'ui.bootstrap',
+        'ui.select',
         'ui.router',
         require('../compositions/hello-world-module.js')
     ])
