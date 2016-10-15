@@ -1,21 +1,25 @@
 import  mainController from '../components/main-controller';
 export default function ($stateProvider, $urlRouterProvider) {
     'ngInject';
-    $urlRouterProvider.otherwise('/info');
+    $urlRouterProvider.otherwise('/home/info');
 
     $stateProvider
-        .state('info', {
-            url: '/info',
-            templateUrl: '../components/personal-info/personal-info.html'
-        })
-        .state('booking', {
-            url: '/booking',
-            templateUrl: '../components/booking-info/booking-info.html',
+        .state('home', {
+            url: '/home',
+            templateUrl: '../components/index.html',
             controller: mainController
         })
-        .state('result', {
+        .state('home.info', {
+            url: '/info',
+            templateUrl: '../components/personal-info/personal-info.html',
+        })
+        .state('home.booking', {
+            url: '/booking',
+            templateUrl: '../components/booking-info/booking-info.html'
+        })
+        .state('home.result', {
             url: '/result',
-            templateUrl: '../components/hello-world/hello-world.html'
+            templateUrl: '../components/hello-world/hello-world.html',
         })
 
     ;

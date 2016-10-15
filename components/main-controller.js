@@ -3,8 +3,25 @@
  */
 export default function mainController($scope){
     'ngInject';
-    $scope.vk='vishal';
-    console.log('vk',$scope.vk);
+    $scope.tabs=["info","booking","result"];
+
+    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+    $scope.format = $scope.formats[0];
+    $scope.altInputFormats = ['M!/d!/yyyy'];
+
+    $scope.onNext=function(fname,lname,email,pno){
+        console.log('vk',fname,lname,email,pno);
+        $scope.firstName=fname;
+        $scope.lastName=lname;
+        $scope.emailId=email;
+        $scope.cNo=pno;
+    };
+    $scope.onSubmit=function(location,toDate,fromDate){
+        console.log('vk',location,toDate,fromDate);
+        $scope.onLocation=location;
+        $scope.departDate=toDate;
+        $scope.returnDate=fromDate;
+    };
     $scope.country = {};
     $scope.countries = [ // Taken from https://gist.github.com/unceus/6501985
         {name: 'Afghanistan', code: 'AF'},

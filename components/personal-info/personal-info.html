@@ -1,17 +1,31 @@
 <div id="personal-info">
-    <div class="form-group">
-        <label>First Name:</label>
-        <input type="text" ng-model="dynamicPopover.content" class="form-control">
-        <br>
-        <label>Last Name:</label>
-        <input type="text" ng-model="dynamicPopover.content" class="form-control">
-        <br>
-        <label>Email:</label>
-        <input type="text" ng-model="dynamicPopover.content" class="form-control">
-        <br>
-        <label>Contact No:</label>
-        <input type="text" ng-model="dynamicPopover.content" class="form-control">
-        <br>
-        <button uib-popover-template="dynamicPopover.templateUrl" popover-title="vk" type="button" class="btn btn-default">Submit</button>
-    </div>
+    <form name="infoForm">
+        <div class="form-group container">
+            <label>First Name:</label>
+            <input type="text" ng-model="fname" class="form-control" name="fname" ng-pattern="/^[A-Za-z]+$/" required>
+            <span ng-show="infoForm.fname.$error.pattern" style="color:red;">*Enter only string.</span>
+            <br>
+            <label>Last Name:</label>
+
+            <input type="text" ng-model="lname" class="form-control" name="lname" ng-pattern="/^[A-Za-z]+$/" required>
+            <span ng-show="infoForm.lname.$error.pattern" style="color:red;">*Enter only string.</span>
+            <br>
+            <label>Email:</label>
+            <input type="email" ng-model="email" class="form-control" name="emailId"
+                   ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required>
+            <span ng-show="infoForm.emailId.$error.pattern" style="color:red;">*You have entered an invalid email address!</span>
+            <br>
+            <label>Contact No:</label>
+            <input type="tel" ng-model="pno" class="form-control" name="phoneNo" ng-maxlength="10" ng-minlength="10"
+                   ng-pattern="/^[0-9]+$/" required>
+            <span ng-show="infoForm.phoneNo.$error.pattern" style="color:red;">Enter only numbers.</span>
+            <span ng-show="infoForm.phoneNo.$error.maxlength || infoForm.phoneNo.$error.minlength" style="color:red;">*Enter only 10 digit numbers.</span>
+            <br>
+            <button ui-sref="home.booking" type="button" class="btn btn-default btn-success"
+                    ng-class="(fname && lname && email && pno)? 'btn-success': 'btn-danger'"
+                    ng-click="onNext(fname,lname,email,pno)"
+                    ng-disabled="(fname && lname && email && pno)? false: true">Next
+                <span class="glyphicon glyphicon-chevron-right"></span></button>
+        </div>
+    </form>
 </div>
