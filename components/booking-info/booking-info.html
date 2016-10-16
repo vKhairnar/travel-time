@@ -12,21 +12,21 @@
             </ui-select>
 
             <br>
-
+                {{toDate | date:'fullDate' }}
             <p class="input-group">
-                <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="toDate"
+                <input type="text" class="form-control" uib-datepicker-popup="yyyy/MM/dd" ng-model="toDate"
                        is-open="flag" datepicker-options="dateOptions" ng-required="true" close-text="Close"
-                       alt-input-formats="altInputFormats"/>
+                       alt-input-formats="altInputFormats" name="dateTo"/>
                 <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="flag = !flag"><i
                     class="glyphicon glyphicon-calendar"></i></button>
-          </span>
+            </span>
             </p>
 
             <p class="input-group">
-                <input type="text" class="form-control" uib-datepicker-popup="MM-dd-yyyy" ng-model="fromDate"
+                <input type="text" class="form-control" uib-datepicker-popup="yyyy/MM/dd" ng-model="fromDate"
                        is-open="flag1" datepicker-options="dateOptions" ng-required="true" close-text="Close"
-                       alt-input-formats="altInputFormats"/>
+                       alt-input-formats="altInputFormats" name="dateFrom"/>
                 <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="flag1 = !flag1"><i
                     class="glyphicon glyphicon-calendar"></i></button>
@@ -35,7 +35,7 @@
             <br>
             <button ui-sref="home.result" type="button" class="btn btn-default"
                     ng-class="(country.selected.name && toDate && fromDate)? 'btn-success': 'btn-danger'"
-                    ng-click="onSubmit(country.selected.name,toDate,fromDate)"
+                    ng-click="onSubmit(country.selected.name,(toDate | date:'fullDate'),(fromDate | date:'fullDate'))"
                     ng-disabled="(country.selected.name && toDate && fromDate)? false: true">Next
                 <span class="glyphicon glyphicon-chevron-right"></span></button>
         </div>
