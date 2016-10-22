@@ -12,11 +12,10 @@
             </ui-select>
 
             <br>
-                {{toDate | date:'fullDate' }}
             <p class="input-group">
                 <input type="text" class="form-control" uib-datepicker-popup="yyyy/MM/dd" ng-model="toDate"
                        is-open="flag" datepicker-options="dateOptions" ng-required="true" close-text="Close"
-                       alt-input-formats="altInputFormats" name="dateTo"/>
+                       alt-input-formats="['M!/d!/yyyy']" name="dateTo"/>
                 <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="flag = !flag"><i
                     class="glyphicon glyphicon-calendar"></i></button>
@@ -26,7 +25,7 @@
             <p class="input-group">
                 <input type="text" class="form-control" uib-datepicker-popup="yyyy/MM/dd" ng-model="fromDate"
                        is-open="flag1" datepicker-options="dateOptions" ng-required="true" close-text="Close"
-                       alt-input-formats="altInputFormats" name="dateFrom"/>
+                       alt-input-formats="['M!/d!/yyyy']" name="dateFrom"/>
                 <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="flag1 = !flag1"><i
                     class="glyphicon glyphicon-calendar"></i></button>

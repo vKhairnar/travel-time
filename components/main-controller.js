@@ -1,11 +1,10 @@
 /**
  * Created by M044 on 08-10-2016.
  */
-export default function mainController($scope){
+export default function mainController($scope,$http){
     'ngInject';
-     $scope.active=1;
+    $scope.active=1;
     $scope.tabs=["info","booking","result"];
-
     $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
     $scope.format = $scope.formats[3];
     $scope.altInputFormats = ['M!/d!/yyyy'];
@@ -19,11 +18,20 @@ export default function mainController($scope){
         $scope.active++;
     };
     $scope.onSubmit=function(location,toDate,fromDate){
-        console.log('vk',location,toDate,fromDate);
+        console.log('vk',location,toDate,fromDate,$scope.firstName);
         $scope.onLocation=location;
         $scope.departDate=toDate;
         $scope.returnDate=fromDate;
         $scope.active++;
+        var data={fname:$scope.firstName,lname:$scope.lastName,cno:$scope.cNo,dateTo:toDate,dateFrom:fromDate};
+        $http.get("http://192.168.10.70:5000/send?email=" + $scope.emailId + "&fName=" +$scope.firstName+"&lName="+$scope.lastName+"&cNo="+$scope.cNo+"&toDate="+toDate+"&fromDate="+fromDate+"&location="+location).
+        success(function (data, status, headers, config) {
+            alert("Thanks you, your booking is conform and send details on your mail.");
+            console.log('Your full name is - ' + data);
+        }).
+        error(function (data, status, headers, config) {
+            alert("An error occurred during the AJAX request");
+        });
     };
 
     $scope.country = {};

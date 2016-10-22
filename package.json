@@ -4,6 +4,7 @@
   "description": "travling app",
   "main": "index.js",
   "scripts": {
+    "run":"node server.js",
     "build": "webpack --progress",
     "build-unminified": "cross-env UNMINIFIED=true webpack --progress",
     "watch": "webpack --watch",
@@ -22,8 +23,10 @@
     "angular-ui-select": "^0.12.100",
     "api-check": "7.5.5",
     "bootstrap": "^3.3.7",
+    "express": "^4.14.0",
     "jquery": "2.1.4",
     "ng-focus-if": "1.0.2",
+    "nodemailer": "^2.6.4",
     "ui-select": "^0.19.4"
   },
   "devDependencies": {
