@@ -1,41 +1,54 @@
 <div id="booking-info">
-    <form name="bookingForm">
-        <div class="form-group container">
-            <label>Location:</label>
-            <ui-select ng-model="country.selected" title="Choose a country">
-                <ui-select-match placeholder="Select or search a country in the list...">{{$select.selected.name}}
+    <form name="bookingForm" class="form-view">
+        <div class="form-group">
+            <label>From:</label>
+            <ui-select ng-model="countryFrom.selected" title="Choose a country">
+                <ui-select-match placeholder="Enter the location...">{{$select.selected.name}}
                 </ui-select-match>
                 <ui-select-choices repeat="country in countries | filter: $select.search">
                     <span ng-bind-html="country.name | highlight: $select.search"></span>
                     <small ng-bind-html="country.code | highlight: $select.search"></small>
                 </ui-select-choices>
             </ui-select>
-
             <br>
+            <label>To:</label>
+            <ui-select ng-model="countryTo.selected" title="Choose a country">
+                <ui-select-match placeholder="Enter the location...">{{$select.selected.name}}
+                </ui-select-match>
+                <ui-select-choices repeat="country in countries | filter: $select.search">
+                    <span ng-bind-html="country.name | highlight: $select.search"></span>
+                    <small ng-bind-html="country.code | highlight: $select.search"></small>
+                </ui-select-choices>
+            </ui-select>
+            <br>
+            <label>Departure Date:</label>
             <p class="input-group">
-                <input type="text" class="form-control" uib-datepicker-popup="yyyy/MM/dd" ng-model="toDate"
+                <input type="text" class="form-control" uib-datepicker-popup="yyyy/MM/dd" ng-model="departureDate"
                        is-open="flag" datepicker-options="dateOptions" ng-required="true" close-text="Close"
-                       alt-input-formats="['M!/d!/yyyy']" name="dateTo"/>
+                       alt-input-formats="['M!/d!/yyyy']" name="dateTo" placeholder="yyyy/MM/dd"/>
                 <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="flag = !flag"><i
                     class="glyphicon glyphicon-calendar"></i></button>
             </span>
             </p>
 
+            <label>Arrival Date:</label>
             <p class="input-group">
-                <input type="text" class="form-control" uib-datepicker-popup="yyyy/MM/dd" ng-model="fromDate"
-                       is-open="flag1" datepicker-options="dateOptions" ng-required="true" close-text="Close"
-                       alt-input-formats="['M!/d!/yyyy']" name="dateFrom"/>
+                <input type="text" class="form-control" uib-datepicker-popup="yyyy/MM/dd" ng-model="arrivelDate"
+                       is-open="flag1" ng-required="true" datepicker-options="dateOptions" close-text="Close"
+                       alt-input-formats="['M!/d!/yyyy']" name="dateFrom" placeholder="yyyy/MM/dd"/>
                 <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="flag1 = !flag1"><i
                     class="glyphicon glyphicon-calendar"></i></button>
-          </span>
+              </span>
             </p>
+            <span ng-show="departureDate > arrivelDate" style="color:red;">please select valid date</span>
             <br>
             <button ui-sref="home.result" type="button" class="btn btn-default"
-                    ng-class="(country.selected.name && toDate && fromDate)? 'btn-success': 'btn-danger'"
-                    ng-click="onSubmit(country.selected.name,(toDate | date:'fullDate'),(fromDate | date:'fullDate'))"
-                    ng-disabled="(country.selected.name && toDate && fromDate)? false: true">Next
+                    ng-class="(countryTo.selected.name && departureDate && arrivelDate && (departureDate <= arrivelDate) && (countryFrom.selected.name != countryTo.selected.name))? 'btn-success': 'btn-danger'"
+                    ng-click="onSubmit(countryFrom.selected.name , countryTo.selected.name,(departureDate | date:'fullDate'),(arrivelDate |  date:'fullDate'))"
+                    ng-disabled="(countryTo.selected.name && departureDate && arrivelDate &&(departureDate <= arrivelDate) && (countryFrom.selected.name != countryTo.selected.name))? false: true">
+                Next
                 <span class="glyphicon glyphicon-chevron-right"></span></button>
         </div>
     </form>

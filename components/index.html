@@ -1,8 +1,8 @@
-<div id="home">
+<div id="home" class="outer-div container">
     <uib-tabset active="active">
-        <uib-tab index="$index + 1" ng-repeat="tab in tabs" heading="{{tab}}"
+        <uib-tab class="tab-set" index="$index + 1" ng-repeat="tab in tabs" heading="{{tab}}"
                  disable="true">
-            <div ui-view></div>
+            <div ui-view class="tabSet"></div>
         </uib-tab>
     </uib-tabset>
 </div>

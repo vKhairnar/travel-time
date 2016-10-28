@@ -1,31 +1,50 @@
-<div id="personal-info">
+<div id="personal-info" class="personal-info">
     <form name="infoForm">
-        <div class="form-group container">
-            <label>First Name:</label>
-            <input type="text" ng-model="fname" class="form-control" name="fname" ng-pattern="/^[A-Za-z]+$/" required>
+        <div class="form-group">
+            <label class="info-label">First Name:</label>
+            <div class="left-inner-addon ">
+                <i class="glyphicon glyphicon-user"></i>
+                <input type="text" ng-model="fname" class="form-control " name="fname" ng-pattern="/^[A-Za-z]+$/"
+                       placeholder="Please enter your first name..." required>
+            </div>
             <span ng-show="infoForm.fname.$error.pattern" style="color:red;">*Enter only string.</span>
             <br>
-            <label>Last Name:</label>
 
-            <input type="text" ng-model="lname" class="form-control" name="lname" ng-pattern="/^[A-Za-z]+$/" required>
+            <label class="info-label">Last Name:</label>
+            <div class="left-inner-addon ">
+                <i class="glyphicon glyphicon-user"></i>
+                <input type="text" ng-model="lname" class="form-control" name="lname"
+                       ng-pattern="/^[A-Za-z]+$/"
+                       placeholder="Please enter your last name..." required>
+            </div>
             <span ng-show="infoForm.lname.$error.pattern" style="color:red;">*Enter only string.</span>
             <br>
-            <label>Email:</label>
-            <input type="email" ng-model="email" class="form-control" name="emailId"
-                   ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required>
+
+            <label class="info-label">Email:</label>
+            <div class="left-inner-addon ">
+                <i class="glyphicon glyphicon-envelope"></i>
+                <input type="email" ng-model="email" class="form-control" name="emailId"
+                       ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" placeholder="Please enter your Email..." required>
+            </div>
             <span ng-show="infoForm.emailId.$error.pattern" style="color:red;">*You have entered an invalid email address!</span>
             <br>
-            <label>Contact No:</label>
-            <input type="tel" ng-model="pno" class="form-control" name="phoneNo" ng-maxlength="10" ng-minlength="10"
-                   ng-pattern="/^[0-9]+$/" required>
+
+            <label class="info-label">Contact No:</label>
+            <div class="left-inner-addon ">
+                <i class="glyphicon glyphicon-phone"></i>
+                <input type="tel" ng-model="pno" class="form-control" name="phoneNo" ng-maxlength="10" ng-minlength="10"
+                       ng-pattern="/^[0-9]+$/" placeholder="Please enter your contact no..." required>
+            </div>
             <span ng-show="infoForm.phoneNo.$error.pattern" style="color:red;">Enter only numbers.</span>
             <span ng-show="infoForm.phoneNo.$error.maxlength || infoForm.phoneNo.$error.minlength" style="color:red;">*Enter only 10 digit numbers.</span>
             <br>
+
             <button ui-sref="home.booking" type="button" class="btn btn-default btn-success"
                     ng-class="(fname && lname && email && pno)? 'btn-success': 'btn-danger'"
                     ng-click="onNext(fname,lname,email,pno)"
                     ng-disabled="(fname && lname && email && pno)? false: true">Next
                 <span class="glyphicon glyphicon-chevron-right"></span></button>
+
         </div>
     </form>
 </div>

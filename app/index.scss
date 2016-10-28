@@ -1,16 +1,30 @@
 @import "../node_modules/ui-select/dist/select.min.css";
 @import "../node_modules/ui-select/dist/select.css";
-@import '../components/hello-world/hello-world';
+@import "../components/index";
+@import '../components/conformation/conformation';
 @import '../components/personal-info/personal-info';
 @import '../components/booking-info/booking-info';
 
 body{
   margin: 0px;
+  background: url(../assets/images/backgroundImage.jpg);
+  background-size: cover;
 }
-#home-page{
+header{
   width: auto;
-  height: 200px;
-  background-position: center;
-  background-image: url("../assets/images/trave-trap.jpg");
-  background-repeat: no-repeat;
+  height: 50px;
+  background-color: #95C11E;
+}
+h1{
+  color: black;
+  font-family:"Arial Black" ;
+  font-weight: 300;
+}
+.hold-view{
+  width: auto;
+  height: auto;
+  margin: 10% 5% 10% 5%;
+}
+a{
+  text-decoration:none !important;
 }

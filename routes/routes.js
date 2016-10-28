@@ -1,4 +1,5 @@
 import  mainController from '../components/main-controller';
+
 export default function ($stateProvider, $urlRouterProvider) {
     'ngInject';
     $urlRouterProvider.otherwise('/home/info');
@@ -19,7 +20,7 @@ export default function ($stateProvider, $urlRouterProvider) {
         })
         .state('home.result', {
             url: '/result',
-            templateUrl: '../components/hello-world/hello-world.html',
+            templateUrl: '../components/conformation/conformation.html',
         })
 
     ;
