@@ -11,8 +11,6 @@ var smtpTransport = nodemailer.createTransport({
     logger: true, // log to console
     debug: true // include SMTP traffic in the logs
 }, {
-    // default message fields
-
     // sender info
     from: 'travleTrap <travle.trap@gmail.com>',
     headers: {
@@ -21,10 +19,6 @@ var smtpTransport = nodemailer.createTransport({
 });
 app.get('/send', function (req, res) {
 
-    var mailOptions = {
-        to: req.query.to,
-        subject: 'comformation'
-    };
     var message = {
         // Comma separated list of recipients
         to: '"' + req.query.fName + '' + req.query.lName + '"<' + req.query.email + '>',
@@ -37,7 +31,6 @@ app.get('/send', function (req, res) {
         ' and return on ' + req.query.fromDate + '</P>' +
         ' <h3>Your Booking is confirmed</h3>'
     };
-    console.log('mailOptions', mailOptions, message);
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 

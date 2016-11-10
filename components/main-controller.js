@@ -26,9 +26,6 @@ export default function mainController($scope, $http) {
             mode = data.mode;
         return mode === date.getDay();
     }
-    $scope.titleClick=function(){
-        $scope.active=1;
-    };
 
     $scope.onNext = function (fname, lname, email, pno) {
         $scope.firstName = fname;
@@ -54,6 +51,10 @@ export default function mainController($scope, $http) {
             alert("An error occurred during the AJAX request");
         });
     };
+    angular.element('#title').click(function () {
+        $scope.active=1;
+        console.log('titleClick',$scope.active);
+    });
 
     $scope.countryFrom = {};
     $scope.countryTo = {};
